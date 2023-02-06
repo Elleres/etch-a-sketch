@@ -1,19 +1,22 @@
-/* const cont = document.querySelector('.container');
+const cont = document.querySelector('.container');
 
 function makeGrid(nPerSide) {
-    for (let i = 0; i < nPerSide * nPerSide;i++){
+    const numberSquares = nPerSide * nPerSide;
+    const screenSize = 960; /*px*/
+    let squareWidth = screenSize / nPerSide;
+    for (let i = 0; i < numberSquares; i++) {
         const div = document.createElement('div');
+        div.setAttribute('id', 'smallSquare');
+        div.style.cssText = `border:dotted 0.01px black;width:${squareWidth - 2}px;height:${squareWidth - 2}px;`
+        /*add the possibility to choose border style */
+        cont.appendChild(div)
+        div.addEventListener('mouseover', (e) => {
+            div.style.backgroundColor = 'pink'
+        })
 
     }
 }
- */
 
-for (let i = 0; i < 256; i++) {
-    const div = document.createElement('div')
-    div.style.cssText = "border:solid 1px black;width:58px;height:58px;"
-    div.setAttribute('id', 'div')
-    cont.appendChild(div)
-    div.addEventListener('mouseover', (e) => {
-        div.style.backgroundColor = 'blue'
-    })
-}
+makeGrid(30)
+
+
