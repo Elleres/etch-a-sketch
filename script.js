@@ -2,6 +2,7 @@ const cont = document.querySelector('.container');
 const btn = document.querySelector('.changeGrid');
 var isGrid = false;
 /* Add limit to amount of squares*/
+makeGrid(30)
 function makeGrid(nPerSide) {
     const numberSquares = nPerSide * nPerSide;
     const screenSize = 960; /*px*/
@@ -10,13 +11,10 @@ function makeGrid(nPerSide) {
         const div = document.createElement('div');
         div.setAttribute('id', 'smallSquare');
         div.style.cssText = `border:dotted 0.01px black;width:${squareWidth - 2}px;height:${squareWidth - 2}px;`
-        /*add the possibility to choose border style */
         cont.appendChild(div)
-        div.addEventListener('mouseover', (e) => {
-            div.style.backgroundColor = 'pink'
-        })
         isGrid = true
     }
+    addEvent('div', 'smallSquare')
 }
 
 btn.addEventListener('click', () => {
@@ -30,4 +28,18 @@ btn.addEventListener('click', () => {
 })
 
 
+function properAdd(divName) {
+    divName.addEventListener('mouseover', event => {
+        event.cancelBubble = true
+        if (event.buttons == 1) {
+            divName.style.backgroundColor = 'black'
+        }
+    })
+}
 
+
+function addEvent(HTMLTag, HTMLid) {
+    const nodeSmallSquares = document.querySelectorAll(HTMLTag, "#", HTMLid)
+    nodeSmallSquares.forEach(properAdd)
+
+}
