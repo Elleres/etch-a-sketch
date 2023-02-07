@@ -2,7 +2,8 @@ const grid = document.getElementById('myRange')
 const cont = document.querySelector('.container');
 const btn = document.querySelector('.changeGrid');
 const sliderText = document.querySelector('.sliderText')
-
+const colorSelector = document.querySelector('#colorSelector')
+var userColor = '#000000'
 
 function makeGrid(nPerSide) {
     const numberSquares = nPerSide * nPerSide;
@@ -22,7 +23,7 @@ function properAdd(divName) {
     divName.addEventListener('mouseover', event => {
         event.cancelBubble = true
         if (event.buttons == 1) {
-            divName.style.backgroundColor = 'black'
+            divName.style.backgroundColor = userColor
         }
     })
 }
@@ -35,10 +36,14 @@ function addEvent(HTMLTag, HTMLid) {
 
 }
 
+makeGrid(30)
 
-grid.addEventListener('change', event => {
+grid.addEventListener('change', () => {
     cont.textContent = ''
     makeGrid(grid.value)
     sliderText.textContent = `${grid.value} x ${grid.value}`
 })
 
+colorSelector.addEventListener('change', () => {
+    userColor = colorSelector.value
+})
