@@ -1,14 +1,36 @@
+html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 body {
     margin: 0;
     display: flex;
     justify-content: center;
+    gap: 100px;
+}
+
+.sliderLabel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sideBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .container {
     display: flex;
-    width: 960px;
+    width: 500px;
     flex-wrap: wrap;
-    height: 960px;
+    height: 500px;
 }
 
 /* div#div:hover {

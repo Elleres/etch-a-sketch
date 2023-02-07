@@ -1,11 +1,12 @@
+const grid = document.getElementById('myRange')
 const cont = document.querySelector('.container');
 const btn = document.querySelector('.changeGrid');
-var isGrid = false;
-/* Add limit to amount of squares*/
-makeGrid(30)
+const sliderText = document.querySelector('.sliderText')
+
+
 function makeGrid(nPerSide) {
     const numberSquares = nPerSide * nPerSide;
-    const screenSize = 960; /*px*/
+    const screenSize = 500; /*px*/
     let squareWidth = screenSize / nPerSide;
     for (let i = 0; i < numberSquares; i++) {
         const div = document.createElement('div');
@@ -16,17 +17,6 @@ function makeGrid(nPerSide) {
     }
     addEvent('div', 'smallSquare')
 }
-
-btn.addEventListener('click', () => {
-    if (isGrid) {
-        cont.textContent = ''
-    }
-    do {
-        var userGrid = prompt('Insert amount of squares per side between 10 and 50: ');
-    } while (userGrid > 50)
-    makeGrid(userGrid)
-})
-
 
 function properAdd(divName) {
     divName.addEventListener('mouseover', event => {
@@ -39,7 +29,16 @@ function properAdd(divName) {
 
 
 function addEvent(HTMLTag, HTMLid) {
-    const nodeSmallSquares = document.querySelectorAll(HTMLTag, "#", HTMLid)
+    const name = HTMLTag + '#' + HTMLid
+    const nodeSmallSquares = document.querySelectorAll(name)
     nodeSmallSquares.forEach(properAdd)
 
 }
+
+
+grid.addEventListener('change', event => {
+    cont.textContent = ''
+    makeGrid(grid.value)
+    sliderText.textContent = `${grid.value} x ${grid.value}`
+})
+
