@@ -11,7 +11,6 @@ function makeGrid(nPerSide) {
         const div = document.createElement('div');
         div.setAttribute('id', 'smallSquare');
         div.style.cssText = `border:dotted 0.01px black;width:${squareWidth - 2}px;height:${squareWidth - 2}px;`
-        /*add the possibility to choose border style */
         cont.appendChild(div)
         isGrid = true
     }
@@ -30,12 +29,14 @@ btn.addEventListener('click', () => {
 
 
 function properAdd(divName) {
-    divName.addEventListener('mouseover', (e) => {
-        divName.style.backgroundColor = 'grey'
-        e.cancelBubble = true
-        console.log(e)
+    divName.addEventListener('mouseover', event => {
+        event.cancelBubble = true
+        if (event.buttons == 1) {
+            divName.style.backgroundColor = 'black'
+        }
     })
 }
+
 
 function addEvent(HTMLTag, HTMLid) {
     const nodeSmallSquares = document.querySelectorAll(HTMLTag, "#", HTMLid)
